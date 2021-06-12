@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .margin {
   margin: 100px;
 }
@@ -9,4 +12,15 @@
 
 .table td {
   padding: 10px 0;
+}
+
+#header {
+  background-color: #253a46;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#header a{
+  color: white;
+  padding-right: 50px;
 }
