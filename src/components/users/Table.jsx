@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-import {connect} from 'react-redux'
-import {getUsers} from '../../actions/users_actions'
+import { connect } from "react-redux";
+import { getUsers } from "../../actions/users_actions";
 
-const Table = ({users, getUsers }) => {
-  const [users2, setUser2] = useState([]);
-
+const Table = ({ users, getUsers }) => {
   const getData = async () => {
     const response = await axios.get(
       "https://jsonplaceholder.typicode.com/users"
     );
-    setUser2(response.data);
+    return response.data;
   };
 
-  useEffect(() => {
-    //getData();
-    getUsers([1,2,3,4,5])
+  useEffect(async () => {
+    getUsers(await getData());
   }, []);
-  console.log(users)
 
   return (
     <div className="margin">
@@ -30,7 +26,7 @@ const Table = ({users, getUsers }) => {
           </tr>
         </thead>
         <tbody>
-          {users2.map((user) => (
+          {users.map((user) => (
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.email}</td>
@@ -43,15 +39,14 @@ const Table = ({users, getUsers }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    users : state
-  }
-}
+    users: state.users_reducers.users,
+  };
+};
 
 const mapDispatchToProps = {
   getUsers,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
- 

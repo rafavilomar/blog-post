@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  users: [1,2,3],
+  users: [],
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
