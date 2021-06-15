@@ -3,12 +3,16 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getUsers } from "../../actions/users_actions";
 
-const Table = ({ users, getUsers }) => {
+const Table = ({ users=[], getUsers }) => {
   const getData = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      return response.data;
+    } catch (error) {
+      console.error('ERROR: '+ error.message);
+    }
   };
 
   useEffect(async () => {
