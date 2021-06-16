@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getUsers } from "../../actions/users_actions";
+import { getUsers, setError, setLoading } from "../../actions/users_actions";
 
-const Table = ({ users=[], getUsers }) => {
+const Table = ({
+  users = [],
+  getUsers,
+  loading,
+  setLoading,
+  setError,
+  error,
+}) => {
   const getData = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
       return response.data;
-    } catch (error) {
-      console.error('ERROR: '+ error.message);
+    } catch (err) {
+      await setError(err.message);
+      console.error("ERROR: " + error);
     }
   };
 
@@ -46,11 +55,15 @@ const Table = ({ users=[], getUsers }) => {
 const mapStateToProps = (state) => {
   return {
     users: state.users_reducers.users,
+    loading: state.users_reducers.loading,
+    error: state.users_reducers.error,
   };
 };
 
 const mapDispatchToProps = {
   getUsers,
+  setLoading,
+  setError,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table);
