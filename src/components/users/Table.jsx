@@ -6,27 +6,10 @@ import { getUsers, setError, setLoading } from "../../actions/users_actions";
 const Table = ({
   users = [],
   getUsers,
-  loading,
   setLoading,
   setError,
   error,
 }) => {
-  const getData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      return response.data;
-    } catch (err) {
-      await setError(err.message);
-      console.error("ERROR: " + error);
-    }
-  };
-
-  useEffect(async () => {
-    getUsers(await getData());
-  }, []);
 
   return (
     <div className="margin">
@@ -55,7 +38,6 @@ const Table = ({
 const mapStateToProps = (state) => {
   return {
     users: state.users_reducers.users,
-    loading: state.users_reducers.loading,
     error: state.users_reducers.error,
   };
 };
