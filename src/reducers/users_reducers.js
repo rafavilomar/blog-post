@@ -3,7 +3,7 @@ import { GET_USERS, SET_LOADING, SET_ERROR } from "../types/users_types";
 const INITIAL_STATE = {
   users: [],
   loading: false,
-  error: null
+  error: {message: null, error: null}
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

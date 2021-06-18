@@ -6,29 +6,26 @@ import { getUsers, setError, setLoading } from "../actions/users_actions";
 
 import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
+import Fatal from "../components/layouts/Fatal";
 
 const Users = ({ loading, getUsers, setLoading, setError, error }) => {
   const getData = async () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
+        "https://jsonplaceholder.typicode.com/userss"
       );
       return response.data;
     } catch (err) {
       await setError(err.message);
-      console.error("ERROR: " + error);
+      console.error("ERROR: " + error.error);
     }
   };
 
   useEffect(async () => {
     getUsers(await getData());
   }, []);
-  return loading ? (
-    <Spinner/>
-  ) : (
-    <Table />
-  );
+  return loading ? <Spinner /> : error ? <Fatal error={error.message} /> : <Table />;
 };
 
 const mapStateToProps = (state) => {

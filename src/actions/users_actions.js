@@ -12,5 +12,5 @@ export const setLoading = (payload) => ({
 
 export const setError = (payload) => ({
   type: SET_ERROR,
-  payload,
+  payload: {message: 'Something was wrong :(', error: payload}
 });
