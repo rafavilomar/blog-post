@@ -1,13 +1,8 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { connect } from "react-redux";
-import { getUsers, setError, setLoading } from "../../actions/users_actions";
+import { Link } from "react-router-dom";
 
-
-const Table = ({
-  users = [],
-}) => {
-
+const Table = ({ users = [] }) => {
   return (
     <div className="margin">
       <table className="table">
@@ -19,11 +14,17 @@ const Table = ({
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users.map((user, key) => (
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.website}</td>
+              <td>
+                {" "}
+                <Link to={`post/${key}`}>
+                  <div className="eye-solid icon"></div>{" "}
+                </Link>{" "}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -32,7 +33,7 @@ const Table = ({
   );
 };
 
-const mapStateToProps = (state) => {  
+const mapStateToProps = (state) => {
   return {
     users: state.users_reducers.users,
   };

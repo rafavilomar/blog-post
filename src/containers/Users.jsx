@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import Table from "../components/users/Table";
 import { getUsers, setError, setLoading } from "../actions/users_actions";
@@ -7,23 +6,13 @@ import { getUsers, setError, setLoading } from "../actions/users_actions";
 import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
+import getData from "../fetch";
 
-const Users = ({ loading, getUsers, setLoading, setError, error, users }) => {
-  const getData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
-      );
-      return response.data;
-    } catch (err) {
-      await setError(err.message);
-      console.error("ERROR: " + error.error);
-    }
-  };
-
+const Users = ({ loading, getUsers, setLoading, setError, error, }) => {
   useEffect(async () => {
-    getUsers(await getData());
+    setLoading(true);
+    let response = await getData();
+    response.data ? getUsers(response.data) : setError(response.err);
   }, []);
   return loading ? (
     <Spinner />
