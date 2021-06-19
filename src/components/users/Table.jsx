@@ -3,6 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import { getUsers, setError, setLoading } from "../../actions/users_actions";
 
+
 const Table = ({
   users = [],
   getUsers,

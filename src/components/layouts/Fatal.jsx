@@ -1,4 +1,4 @@
 import React from "react";
 
-const Fatal = ({ error }) => <h3>{error}</h3>;
+const Fatal = ({ error }) => <h2>{error}</h2>;
 export default Fatal;
