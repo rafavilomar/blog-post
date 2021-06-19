@@ -15,7 +15,6 @@ const Users = ({ loading, getUsers, setLoading, setError, error, users }) => {
       const response = await axios.get(
         "https://jsonplaceholder.typicode.com/users"
       );
-      console.info(response)
       return response.data;
     } catch (err) {
       await setError(err.message);
@@ -25,10 +24,14 @@ const Users = ({ loading, getUsers, setLoading, setError, error, users }) => {
 
   useEffect(async () => {
     getUsers(await getData());
-    console.info(await getData().then(console.info(users)))
-    console.info(users)
   }, []);
-  return loading ? <Spinner /> : error ? <Fatal error={error.message} /> : <Table  />;
+  return loading ? (
+    <Spinner />
+  ) : error.error ? (
+    <Fatal error={error.message} />
+  ) : (
+    <Table />
+  );
 };
 
 const mapStateToProps = (state) => {

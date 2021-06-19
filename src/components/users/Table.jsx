@@ -6,10 +6,6 @@ import { getUsers, setError, setLoading } from "../../actions/users_actions";
 
 const Table = ({
   users = [],
-  getUsers,
-  setLoading,
-  setError,
-  error,
 }) => {
 
   return (
@@ -36,17 +32,10 @@ const Table = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {  
   return {
     users: state.users_reducers.users,
-    error: state.users_reducers.error,
   };
 };
 
-const mapDispatchToProps = {
-  getUsers,
-  setLoading,
-  setError,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Table);
+export default connect(mapStateToProps, null)(Table);
