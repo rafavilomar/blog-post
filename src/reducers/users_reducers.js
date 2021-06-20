@@ -1,4 +1,4 @@
-import { GET_USERS, SET_LOADING, SET_ERROR } from "../types/users_types";
+import { USERS_GET_ALL, USERS_SET_ERROR, USERS_SET_LOADING } from "../types/users_types";
 
 const INITIAL_STATE = {
   users: [],
@@ -7,11 +7,11 @@ const INITIAL_STATE = {
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case GET_USERS:
-      return { ...state, users: action.payload, loading: false };
-    case SET_LOADING:
+    case USERS_GET_ALL:
+      return { ...state, users: action.payload, loading: false, error: { message: null, error: null } };
+    case USERS_SET_LOADING:
       return { ...state, loading: action.payload };
-    case SET_ERROR:
+    case USERS_SET_ERROR:
       return { ...state, error: action.payload, loading: false };
     default:
       return state;

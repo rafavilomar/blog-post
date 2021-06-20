@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getData = async () => {
+export const getUsers_API = async () => {
   let response = { data: null, err: null };
   try {
     response.data = await axios
@@ -14,4 +14,16 @@ const getData = async () => {
   }
 };
 
-export default getData;
+export const getPost_API = async (id) => {
+  let response = { data: null, err: null };
+  try {
+    response.data = await axios
+      .get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+      .then((response) => response.data);
+    return response;
+  } catch (err) {
+    response.err = err.message;
+    console.error("ERROR: " + err.message);
+    return response;
+  }
+};

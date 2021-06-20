@@ -6,12 +6,12 @@ import { getUsers, setError, setLoading } from "../actions/users_actions";
 import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
-import getData from "../fetch";
+import {getUsers_API} from "../fetch";
 
 const Users = ({ loading, getUsers, setLoading, setError, error, }) => {
   useEffect(async () => {
     setLoading(true);
-    let response = await getData();
+    let response = await getUsers_API();
     response.data ? getUsers(response.data) : setError(response.err);
   }, []);
   return loading ? (

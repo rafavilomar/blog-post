@@ -1,3 +1,3 @@
-export const GET_USERS = "GET_USERS";
-export const SET_LOADING = "SET_LOADING";
-export const SET_ERROR = "SET_ERROR";
+export const USERS_GET_ALL = "GET_USERS";
+export const USERS_SET_LOADING = "SET_LOADING";
+export const USERS_SET_ERROR = "SET_ERROR";

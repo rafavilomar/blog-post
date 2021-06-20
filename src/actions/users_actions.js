@@ -1,16 +1,16 @@
-import { GET_USERS, SET_ERROR, SET_LOADING } from "../types/users_types";
+import { USERS_GET_ALL, USERS_SET_ERROR, USERS_SET_LOADING } from "../types/users_types";
 
 export const getUsers = (payload) => ({
-  type: GET_USERS,
+  type: USERS_GET_ALL,
   payload,
 });
 
 export const setLoading = (payload) => ({
-  type: SET_LOADING,
+  type: USERS_SET_LOADING,
   payload,
 });
 
 export const setError = (payload) => ({
-  type: SET_ERROR,
+  type: USERS_SET_ERROR,
   payload: { message: "Something was wrong :(", error: payload },
 });

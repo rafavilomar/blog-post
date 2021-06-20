@@ -1,0 +1,1 @@
+export const POSTS_GET_ALL = 'POSTS_GET_ALL'
