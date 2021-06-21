@@ -1,4 +1,3 @@
-import { getUsers_API } from "../fetch";
 import {
   USERS_GET_ALL,
   USERS_SET_ERROR,
