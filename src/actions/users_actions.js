@@ -1,9 +1,16 @@
-import { USERS_GET_ALL, USERS_SET_ERROR, USERS_SET_LOADING } from "../types/users_types";
+import { getUsers_API } from "../fetch";
+import {
+  USERS_GET_ALL,
+  USERS_SET_ERROR,
+  USERS_SET_LOADING,
+} from "../types/users_types";
 
-export const getUsers = (payload) => ({
-  type: USERS_GET_ALL,
-  payload,
-});
+export const getUsers = (payload) => {
+  return {
+    type: USERS_GET_ALL,
+    payload,
+  };
+};
 
 export const setLoading = (payload) => ({
   type: USERS_SET_LOADING,
