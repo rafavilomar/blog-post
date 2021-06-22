@@ -8,12 +8,22 @@ import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
 import { getUsers_API } from "../fetch";
 
-const Users = ({ loading, getUsers, setLoading, setError, error }) => {
+const Users = ({
+  loading,
+  getUsers,
+  setLoading,
+  setError,
+  error,
+  users = [],
+}) => {
   useEffect(async () => {
-    setLoading(true);
-    let response = await getUsers_API();
-    response.data ? getUsers(response.data) : setError(response.err);
+    if (users.length === 0) {
+      setLoading(true);
+      let response = await getUsers_API();
+      response.data ? getUsers(response.data) : setError(response.err);
+    }
   }, []);
+
   return loading ? (
     <Spinner />
   ) : error.error ? (

@@ -4,13 +4,12 @@ import { getUsers } from "../actions/users_actions";
 import { getPosts } from "../actions/posts_actions";
 import { getPost_API, getUsers_API } from "../fetch";
 
-const Post = ({ match, users = [], posts = [], getPosts }) => {
+const Post = ({ match, users = [], getUsers, posts = [], getPosts }) => {
   const checkUsers = async () => {
     if (users.length > 0) {
       let responsePosts = await getPost_API(users[match.params.key].id);
       getPosts(responsePosts.data);
     } else {
-      console.log("else");
       let responseUsers = await getUsers_API();
       getUsers(responseUsers.data);
       let responsePosts = await getPost_API(
@@ -22,6 +21,12 @@ const Post = ({ match, users = [], posts = [], getPosts }) => {
 
   useEffect(async () => {
     await checkUsers();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      getPosts([]);
+    };
   }, []);
 
   return posts.map((post) => <p>{`${post.title} - ${post.userId}`}</p>);
