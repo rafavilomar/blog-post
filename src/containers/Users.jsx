@@ -6,9 +6,9 @@ import { getUsers, setError, setLoading } from "../actions/users_actions";
 import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
-import {getUsers_API} from "../fetch";
+import { getUsers_API } from "../fetch";
 
-const Users = ({ loading, getUsers, setLoading, setError, error, }) => {
+const Users = ({ loading, getUsers, setLoading, setError, error }) => {
   useEffect(async () => {
     setLoading(true);
     let response = await getUsers_API();
