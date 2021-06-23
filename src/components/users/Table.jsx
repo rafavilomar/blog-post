@@ -21,7 +21,7 @@ const Table = ({ users = [] }) => {
               <td>{user.website}</td>
               <td>
                 {" "}
-                <Link to={`post/${key}`}>
+                <Link to={`post/${user.id}`}>
                   <div className="eye-solid icon"></div>{" "}
                 </Link>{" "}
               </td>
