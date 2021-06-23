@@ -1,60 +1,70 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getUsers } from "../actions/users_actions";
-import { getPosts } from "../actions/posts_actions";
-import { getPost_API, getUsers_API } from "../fetch";
+import {
+  getPosts,
+  setErrorPosts,
+  setLoadingPosts,
+} from "../actions/posts_actions";
+import { getPost_API } from "../fetch";
 
-const Post = ({ match, users = [], getUsers, posts = [], getPosts }) => {
-  const [userId, setUserId] = useState(match.params.key)
+import Fatal from "../components/layouts/Fatal";
+import Spinner from "../components/layouts/Spinner";
+
+const Post = ({
+  match,
+  posts = [],
+  getPosts,
+  error,
+  loading,
+  setLoadingPosts,
+  setErrorPosts,
+}) => {
+  const [userId, setUserId] = useState(match.params.key);
 
   const checkUsers = async () => {
-    // let user = await users.find(e => e.id == match.params.key)
-    // console.log(user && user.id);
-    // console.log(users.length);
-    // if (users.length > 0) {
-    //   let responsePosts = await getPost_API(getUserById().id);
-    //   getPosts(responsePosts.data);
-    // } else {
-    //   //console.log('else');
-    //   //let responseUsers = await getUsers_API();
-    //   //getUsers(responseUsers.data);
-    //   let responsePosts = await getPost_API(userId
-    //     //await responseUsers.data.find(e => e.id == match.params.key)
-    //   );
-    //   getPosts(responsePosts.data);
-    //   //console.log( await (await getPost_API(userId)).data);
-    //   //console.log(responsePosts.data);
-    // }
-    let responsePosts = await getPost_API(userId)
-    getPosts(responsePosts.data);
-    
+    setLoadingPosts(true);
+    let responsePosts = await getPost_API(userId);
+    responsePosts.data
+      ? getPosts(responsePosts.data)
+      : setErrorPosts(responsePosts.err);
   };
 
-  useEffect(async () => {
-    await checkUsers();
-    //console.log(users.find(e => e.id == match.params.key))
+  const cleaningStates = () => {
+    getPosts([]);
+    setUserId(null);
+  };
+
+  useEffect(() => {
+    checkUsers();
   }, []);
 
   useEffect(() => {
-    return () => {
-      getPosts([]);
-      setUserId(null)
-    };
+    return cleaningStates();
   }, []);
 
-  return posts.map((post) => <p>{`${post.title} - ${post.userId}`}</p>);
+  return loading ? (
+    <Spinner />
+  ) : error.error ? (
+    <Fatal error={error.message} />
+  ) : (
+    posts.map((post, key) => (
+      <p key={key}>{`${post.title} - ${post.userId}`}</p>
+    ))
+  );
 };
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users_reducers.users,
     posts: state.posts_reducers.posts,
+    error: state.posts_reducers.error,
+    loading: state.posts_reducers.loading,
   };
 };
 
 const mapDispatchToProps = {
-  getUsers,
   getPosts,
+  setErrorPosts,
+  setLoadingPosts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Post);

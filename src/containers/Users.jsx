@@ -16,12 +16,15 @@ const Users = ({
   error,
   users = [],
 }) => {
-  useEffect(async () => {
+  const handleUsers = async () => {
     if (users.length === 0) {
       setLoading(true);
       let response = await getUsers_API();
       response.data ? getUsers(response.data) : setError(response.err);
     }
+  };
+  useEffect(() => {
+    handleUsers();
   }, []);
 
   return loading ? (

@@ -1,1 +1,3 @@
 export const POSTS_GET_ALL = 'POSTS_GET_ALL'
+export const POSTS_SET_LOADING = "POSTS_SET_LOADING";
+export const POSTS_SET_ERROR = "POSTS_SET_ERROR";

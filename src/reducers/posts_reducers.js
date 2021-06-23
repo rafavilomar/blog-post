@@ -1,4 +1,8 @@
-import { POSTS_GET_ALL } from "../types/posts_types";
+import {
+  POSTS_GET_ALL,
+  POSTS_SET_ERROR,
+  POSTS_SET_LOADING,
+} from "../types/posts_types";
 
 const INITIAL_STATE = {
   posts: [],
@@ -14,6 +18,10 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: { message: null, error: null },
       };
+    case POSTS_SET_LOADING:
+      return { ...state, loading: action.payload };
+    case POSTS_SET_ERROR:
+      return { ...state, error: action.payload, loading: false };
     default:
       return state;
   }
