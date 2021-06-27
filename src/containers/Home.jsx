@@ -39,7 +39,7 @@ const Home = ({
   ) : (
     <div className="home">
       <section className="postList">
-        {posts.map((post, key) => (
+        {posts.slice(0, 9).map((post, key) => (
           <PostCard key={key} post={post} />
         ))}
       </section>

@@ -6,7 +6,7 @@ import { getUsers, setError, setLoading } from "../actions/users_actions";
 import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
-import { getUsers_API } from "../fetch";
+import { getAllUsers_API } from "../fetch";
 
 const Users = ({
   loading,
@@ -19,7 +19,7 @@ const Users = ({
   const handleUsers = async () => {
     if (users.length === 0) {
       setLoading(true);
-      let response = await getUsers_API();
+      let response = await getAllUsers_API();
       response.data ? getUsers(response.data) : setError(response.err);
     }
   };

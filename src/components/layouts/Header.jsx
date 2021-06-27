@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../../assets/styles/layout/header.scss";
 
 import IconButton from "../buttons/IconButton";
+import Avatar from 'react-nice-avatar'
 
 //ICONS
 import { ReactComponent as DropdownIcon } from "../../assets/icons/dropdown.svg";
@@ -28,8 +29,8 @@ const Header = () => {
         </Link>
         <IconButton icon={<AddIcon className="icon" height={22} width={22} />} />
         <div id='profile' >
-          <span></span>
-            <DropdownIcon className='icon'/>
+          <Avatar style={{ width: 42, height: 42 }}/>
+            <DropdownIcon className='icon' height={18} width={18}/>
         </div>
       </nav>
     </div>

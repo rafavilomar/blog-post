@@ -4,9 +4,9 @@
 //COLORS
 $bg-primary: #000000;
 $bg-secondary: rgba(#303030, 0.5);
-$textColor-pimary: #ffffff;
-$textColor-secondary: #e5e5e5;
-$textColor-tertiary: #BDBDBD;
+$textColor-pimary: #e5e5e5;
+$textColor-secondary: #c4c4c4;
+$textColor-tertiary: #bdbdbd;
 
 $mainColor: #ffe3f1;
 $gradient: 193.94deg, #009190 24.85%, #a1d9e2 42.79%, #ffe3f1 82.07%;
@@ -29,5 +29,5 @@ body {
 
 a {
   text-decoration: none;
-  color: $textColor-pimary;
+  color: none;
 }
