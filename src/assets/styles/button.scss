@@ -1,0 +1,23 @@
+@import "./main.scss";
+
+.btn {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.btn:focus {
+  outline: none;
+}
+
+.iconButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.iconButton:hover {
+  background-color: $bg-secondary;
+}
