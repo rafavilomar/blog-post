@@ -1,0 +1,12 @@
+@import '../main.scss';
+
+.home {
+  padding: 0 200px;
+}
+
+.postList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  margin: 50px 0;
+}

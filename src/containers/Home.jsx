@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "../assets/styles/containers/home.scss";
 import { connect } from "react-redux";
 import {
   getPosts,
@@ -7,6 +8,7 @@ import {
 } from "../actions/posts_actions";
 import { getALLPost_API } from "../fetch";
 
+//COMPONENTS
 import Fatal from "../components/layouts/Fatal";
 import Spinner from "../components/layouts/Spinner";
 import PostCard from "../components/posts/PostCard";
@@ -35,10 +37,13 @@ const Home = ({
   ) : error.error ? (
     <Fatal error={error.message} />
   ) : (
-    posts.map((post, key) => (
-      <PostCard key={key} post={post} />
-      // <p key={key}>{`${post.title} - ${post.userId}`}</p>
-    ))
+    <div className="home">
+      <section className="postList">
+        {posts.map((post, key) => (
+          <PostCard key={key} post={post} />
+        ))}
+      </section>
+    </div>
   );
 };
 const mapStateToProps = (state) => {
