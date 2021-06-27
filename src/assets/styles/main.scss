@@ -6,6 +6,8 @@ $bg-primary: #000000;
 $bg-secondary: rgba(#303030, 0.5);
 $textColor-pimary: #ffffff;
 $textColor-secondary: #e5e5e5;
+$textColor-tertiary: #BDBDBD;
+
 $mainColor: #ffe3f1;
 $gradient: 193.94deg, #009190 24.85%, #a1d9e2 42.79%, #ffe3f1 82.07%;
 $border-gradient: 136.25deg, rgba(255, 227, 241, 0.6) 5.9%,
@@ -14,3 +16,13 @@ $border-gradient: 136.25deg, rgba(255, 227, 241, 0.6) 5.9%,
 //FONTS
 $font-title: "Josefin Sans", sans-serif;
 $font-body: "DM Sans", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-primary;
+  color: $textColor-pimary;
+}

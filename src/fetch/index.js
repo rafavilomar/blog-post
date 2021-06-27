@@ -14,6 +14,20 @@ export const getUsers_API = async () => {
   }
 };
 
+export const getALLPost_API = async () => {
+  let response = { data: null, err: null };
+  try {
+    response.data = await axios
+      .get(`https://jsonplaceholder.typicode.com/posts`)
+      .then((response) => response.data);
+    return response;
+  } catch (err) {
+    response.err = err.message;
+    console.error("ERROR: " + err.message);
+    return response;
+  }
+};
+
 export const getPost_API = async (id) => {
   let response = { data: null, err: null };
   try {
