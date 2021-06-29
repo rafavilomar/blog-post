@@ -1,3 +1,16 @@
+@import '../main.scss';
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 65;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .lds-facebook {
   display: inline-block;
   position: relative;
@@ -9,7 +22,7 @@
   position: absolute;
   left: 8px;
   width: 16px;
-  background: #253a46;
+  background: $mainColor;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 .lds-facebook div:nth-child(1) {

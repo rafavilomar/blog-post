@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Table from "../components/users/Table";
 import { getUsers, setError, setLoading } from "../actions/users_actions";
 
-import "../assets/styles/spinner.css";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
 import { getAllUsers_API } from "../fetch";

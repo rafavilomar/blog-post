@@ -21,7 +21,7 @@ const Header = () => {
       <nav>
         <div id="searchBar">
           <SearchIcon className="icon" />
-          <input type="text" />
+          <input type="text" placeholder="Search" />
         </div>
         <Link to="/">
           <IconButton

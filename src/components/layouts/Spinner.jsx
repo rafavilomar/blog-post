@@ -1,13 +1,13 @@
 import React from "react";
-import "../../assets/styles/spinner.css";
+import "../../assets/styles/layout/spinner.scss";
 
 const Spinner = () => (
-  <div className="center">
-  <div className="lds-facebook">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+  <div className="spinner">
+    <div className="lds-facebook">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 );
 
