@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
+import "../assets/styles/containers/users.scss";
 import { connect } from "react-redux";
 import { getUsers, setError, setLoading } from "../actions/users_actions";
 import { getAllUsers_API } from "../fetch";
 
-import Table from "../components/users/Table";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
 import UserCard from "../components/users/UserCard";
@@ -32,7 +32,13 @@ const Users = ({
   ) : error.error ? (
     <Fatal error={error.message} />
   ) : (
-    <UserCard/>
+    <div className="users">
+      <section className="usersList">
+        {[1, 1, 1, 1, 1, 1].map((e, key) => (
+          <UserCard key={key} />
+        ))}
+      </section>
+    </div>
   );
 };
 
