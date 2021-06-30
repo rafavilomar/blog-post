@@ -34,8 +34,8 @@ const Users = ({
   ) : (
     <div className="users">
       <section className="usersList">
-        {[1, 1, 1, 1, 1, 1].map((e, key) => (
-          <UserCard key={key} />
+        {users.map((user, key) => (
+          <UserCard key={key} user={user} />
         ))}
       </section>
     </div>
