@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Table from "../components/users/Table";
 import { getUsers, setError, setLoading } from "../actions/users_actions";
+import { getAllUsers_API } from "../fetch";
 
+import Table from "../components/users/Table";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
-import { getAllUsers_API } from "../fetch";
+import UserCard from "../components/users/UserCard";
 
 const Users = ({
   loading,
@@ -31,7 +32,7 @@ const Users = ({
   ) : error.error ? (
     <Fatal error={error.message} />
   ) : (
-    <Table />
+    <UserCard/>
   );
 };
 
