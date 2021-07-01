@@ -13,7 +13,6 @@ import AllPosts from "../containers/posts/AllPosts";
 const App = () => {
   return (
     <BrowserRouter>
-      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users" component={Users} />

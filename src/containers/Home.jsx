@@ -9,6 +9,7 @@ import {
 import { getALLPost_API } from "../fetch";
 
 //COMPONENTS
+import Header from "../components/layouts/Header";
 import Fatal from "../components/layouts/Fatal";
 import Spinner from "../components/layouts/Spinner";
 import PostCard from "../components/posts/PostCard";
@@ -32,18 +33,23 @@ const Home = ({
     checkUsers();
   }, []);
 
-  return loading ? (
-    <Spinner />
-  ) : error.error ? (
-    <Fatal error={error.message} />
-  ) : (
-    <div className="home">
-      <section className="postList">
-        {posts.slice(0, 9).map((post, key) => (
-          <PostCard key={key} post={post} />
-        ))}
-      </section>
-    </div>
+  return (
+    <>
+      <Header posts />
+      {loading ? (
+        <Spinner />
+      ) : error.error ? (
+        <Fatal error={error.message} />
+      ) : (
+        <div className="home">
+          <section className="postList">
+            {posts.slice(0, 9).map((post, key) => (
+              <PostCard key={key} post={post} />
+            ))}
+          </section>
+        </div>
+      )}
+    </>
   );
 };
 const mapStateToProps = (state) => {
