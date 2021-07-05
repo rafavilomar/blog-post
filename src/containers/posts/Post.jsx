@@ -1,55 +1,62 @@
 import React, { useEffect, useState } from "react";
+import '../../assets/styles/containers/posts.scss'
 import { connect } from "react-redux";
 import {
   getPosts,
   setErrorPosts,
   setLoadingPosts,
 } from "../../actions/posts_actions";
-import { getPost_API } from "../../fetch";
+import { getPost_API, getUsersById_API } from "../../fetch";
 
 import Fatal from "../../components/layouts/Fatal";
 import Spinner from "../../components/layouts/Spinner";
+import UserCard from "../../components/users/UserCard";
+import Header from "../../components/layouts/Header";
+import Comment from "../../components/posts/Comment";
 
-const Post = ({
-  match,
-  posts = [],
-  getPosts,
-  error,
-  loading,
-  setLoadingPosts,
-  setErrorPosts,
-}) => {
-  const [userId, setUserId] = useState(match.params.key);
+const Post = ({ match }) => {
 
-  const checkUsers = async () => {
-    setLoadingPosts(true);
-    let responsePosts = await getPost_API(userId);
-    responsePosts.data
-      ? getPosts(responsePosts.data)
-      : setErrorPosts(responsePosts.err);
-  };
+  const [post, setPost] = useState()
+  const [comments, setComments] = useState([])
+  const [user, setUser] = useState()
 
-  const cleaningStates = () => {
-    getPosts([]);
-    setUserId(null);
-  };
+  const handlePost = async () => {
+    let response = await getPost_API(match.params.key)
+    setPost(response.data[0])
+    handleUser(response.data[0].userId)
+  }
 
-  useEffect(() => {
-    checkUsers();
-  }, []);
+  const handleUser = async (id) => {
+    let response = await getUsersById_API(id)
+    setUser(response.data[0])
+  } 
 
-  useEffect(() => {
-    return cleaningStates();
-  }, []);
+  useEffect( () => {
+    handlePost()
+  }, [])
 
-  return loading ? (
-    <Spinner />
-  ) : error.error ? (
-    <Fatal error={error.message} />
-  ) : (
-    posts.map((post, key) => (
-      <p key={key}>{`${post.title} - ${post.userId}`}</p>
-    ))
+  return (
+    <>
+      <Header />
+      <div className="postDetails">
+        <section className="post">
+          <h3 className="post__title">{post && post.title}</h3>
+          <div className="post__image" ></div>
+          <p className="post__content">{post && post.body}</p>
+          <section>
+            <div className="comment__head">
+              <h5>Comments</h5>
+            </div>
+            <div className="comment__list">
+              <Comment name={user && user.name} body='' />
+            </div>
+          </section>
+        </section>
+        <section className="user">
+          <UserCard user={user && user} />
+        </section>
+      </div>
+    </>
   );
 };
 

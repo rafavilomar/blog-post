@@ -1,0 +1,34 @@
+@import './main.scss';
+
+.comment {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 20px;
+}
+
+.comment__image {
+  box-sizing: border-box;
+  width: 62px;
+  height: 62px;
+  border-radius: 100%;
+  background-color: $mainColor;
+}
+
+.comment__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.comment__name {
+  font-family: $font-title;
+  font-size: 20px;
+  color: $textColor-pimary;
+}
+
+.comment__body {
+  font-family: $font-body;
+  color: $textColor-secondary;
+  font-size: 14px;
+}

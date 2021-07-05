@@ -46,7 +46,7 @@ export const getPost_API = async (id) => {
   let response = { data: null, err: null };
   try {
     response.data = await axios
-      .get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+      .get(`https://jsonplaceholder.typicode.com/posts?id=${id}`)
       .then((response) => response.data);
     return response;
   } catch (err) {
