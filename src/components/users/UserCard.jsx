@@ -18,7 +18,9 @@ const UserCard = ({ user }) => {
   return (
     <Link to="/">
       <article className="userCard">
-        <Avatar style={{ width: 150, height: 150 }} />
+        <div className="userCard__image">
+          <Avatar style={{ width: 140, height: 140 }} />
+        </div>
         <div className="userCard__content">
           <p className="userCard__userName">{`@${user && user.username}`}</p>
           <h4 className="userCard__fullName">{user && user.name}</h4>

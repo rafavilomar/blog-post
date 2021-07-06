@@ -14,7 +14,7 @@ export default (state = INITIAL_STATE, action) => {
     case COMMENTS_GET_ALL:
       return {
         ...state,
-        posts: action.payload,
+        comments: action.payload,
         loading: false,
         error: { message: null, error: null },
       };

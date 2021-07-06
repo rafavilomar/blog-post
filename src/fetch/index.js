@@ -55,3 +55,17 @@ export const getPost_API = async (id) => {
     return response;
   }
 };
+
+export const getCommentsByPost_API = async (id) => {
+  let response = { data: null, err: null };
+  try {
+    response.data = await axios
+      .get(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
+      .then((response) => response.data);
+    return response;
+  } catch (err) {
+    response.err = err.message;
+    console.error("ERROR: " + err.message);
+    return response;
+  }
+};

@@ -1,16 +1,16 @@
 import React from "react";
 import "../../assets/styles/comment.scss";
 
+import Avatar from "react-nice-avatar";
+
 const Comment = ({ body, name }) => {
   return (
     <article className="comment">
-      <div className="comment__image"></div>
+    <Avatar style={{ width: 62, height: 62 }} />
       <div className="comment__content">
         <h6 className="comment__name"> {name} </h6>
         <p className="comment__body">
-          laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora
-          quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente
-          accusantium
+          {body}
         </p>
       </div>
     </article>

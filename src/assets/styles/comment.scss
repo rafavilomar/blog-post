@@ -23,12 +23,12 @@
 
 .comment__name {
   font-family: $font-title;
-  font-size: 20px;
-  color: $textColor-pimary;
+  font-size: 18px;
+  color: $textColor-secondary;
 }
 
 .comment__body {
   font-family: $font-body;
-  color: $textColor-secondary;
+  color: $textColor-tertiary;
   font-size: 14px;
 }
