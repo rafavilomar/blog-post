@@ -3,13 +3,10 @@
 .postCard {
   cursor: pointer;
   box-sizing: border-box;
-  //width: 300px;
-  height: 330px;
   border-radius: 10px;
   background-color: $bg-secondary;
   overflow: hidden;
   border: 2px solid transparent;
-  border-radius: 10px;
 
   span {
     display: flex;

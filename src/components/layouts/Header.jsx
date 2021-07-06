@@ -12,25 +12,37 @@ import { ReactComponent as UsersIcon } from "../../assets/icons/users.svg";
 import { ReactComponent as AddIcon } from "../../assets/icons/add.svg";
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 
-const Header = () => {
+const Header = ({ posts = false, users = false }) => {
   return (
     <div id="header">
-      <Link to='/' >
+      <Link to="/">
         <h1 id="brand">BlogPost</h1>
       </Link>
       <nav>
         <div id="searchBar">
           <SearchIcon className="icon" />
-          <input type="text" />
+          <input type="text" placeholder="Search" />
         </div>
         <Link to="/">
           <IconButton
-            icon={<PostIcon className="icon-active" height={22} width={22} />}
+            icon={
+              <PostIcon
+                className={posts ? "icon-active" : "icon"}
+                height={22}
+                width={22}
+              />
+            }
           />
         </Link>
         <Link to="/users">
           <IconButton
-            icon={<UsersIcon className="icon" height={22} width={22} />}
+            icon={
+              <UsersIcon
+                className={users ? "icon-active" : "icon"}
+                height={22}
+                width={22}
+              />
+            }
           />
         </Link>
         <IconButton

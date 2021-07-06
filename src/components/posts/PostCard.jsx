@@ -49,7 +49,7 @@ const PostCard = ({ post }) => {
   }, []);
 
   return (
-    <Link to="/">
+    <Link to={`posts/${post.id}`}>
       {console.log(randomDate())}
       <article className="postCard">
         <div className="postCard__head">

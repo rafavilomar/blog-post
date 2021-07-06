@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
+import "../assets/styles/containers/users.scss";
 import { connect } from "react-redux";
-import Table from "../components/users/Table";
 import { getUsers, setError, setLoading } from "../actions/users_actions";
+import { getAllUsers_API } from "../fetch";
 
-import "../assets/styles/spinner.css";
+import Header from "../components/layouts/Header";
 import Spinner from "../components/layouts/Spinner";
 import Fatal from "../components/layouts/Fatal";
-import { getAllUsers_API } from "../fetch";
+import UserCard from "../components/users/UserCard";
 
 const Users = ({
   loading,
@@ -27,12 +28,23 @@ const Users = ({
     handleUsers();
   }, []);
 
-  return loading ? (
-    <Spinner />
-  ) : error.error ? (
-    <Fatal error={error.message} />
-  ) : (
-    <Table />
+  return (
+    <>
+      <Header users />
+      {loading ? (
+        <Spinner />
+      ) : error.error ? (
+        <Fatal error={error.message} />
+      ) : (
+        <div className="users">
+          <section className="usersList">
+            {users.map((user, key) => (
+              <UserCard key={key} user={user} />
+            ))}
+          </section>
+        </div>
+      )}
+    </>
   );
 };
 

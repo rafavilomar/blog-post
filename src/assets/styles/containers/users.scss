@@ -1,0 +1,12 @@
+@import '../main.scss';
+
+.users {
+  padding: 0 200px;
+}
+
+.usersList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 70px;
+  margin: 50px 0;
+}
