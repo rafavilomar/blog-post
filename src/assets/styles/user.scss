@@ -55,3 +55,33 @@
   font-family: $font-title;
   color: $textColor-pimary;
 }
+
+.tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba($textColor-pimary, 0.2);
+}
+
+.tab__option {
+  cursor: pointer;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h5 {
+    color: $textColor-secondary;
+    font-family: $font-title;
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
+.tab__option-active {
+  h5 {
+    color: $textColor-pimary;
+  }
+  border-bottom: 3px solid $textColor-secondary;
+}
