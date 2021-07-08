@@ -10,3 +10,10 @@
   gap: 70px;
   margin: 50px 0;
 }
+
+.userDetails {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 50px;
+}
