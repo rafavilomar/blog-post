@@ -1,4 +1,4 @@
-@import '../main.scss';
+@import "../main.scss";
 
 .users {
   padding: 0 200px;
@@ -16,4 +16,11 @@
   display: grid;
   grid-template-columns: 200px 1fr;
   gap: 50px;
+}
+
+.userDetails__content {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
