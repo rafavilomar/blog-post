@@ -131,3 +131,33 @@
     color: $textColor-tertiary;
   }
 }
+
+.userPost {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  span {
+    height: 100%;
+    width: 125px;
+    background-color: $mainColor;
+  }
+}
+
+.userPost__info{
+  h6 {
+    font-size: 12px;
+    font-family: $font-body;
+    color: $textColor-tertiary;
+  }
+  h5 {
+    font-size: 20px;
+    font-family: $font-title;
+    color: $textColor-pimary;
+
+  }
+  p {
+    color: $textColor-secondary;
+    font-size: 14px;
+    font-family: $font-body;
+  }
+}

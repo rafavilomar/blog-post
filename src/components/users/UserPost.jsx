@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from "react";
+import '../../assets/styles/user.scss'
 import moment from "moment";
 import { Link } from "react-router-dom";
-import "../../assets/styles/post.scss";
 
-import Avatar from "react-nice-avatar";
-import { getUsersById_API } from "../../fetch";
-
-const PostCard = ({ post }) => {
-  const [userName, setUserName] = useState();
-
-  const getUser = async () => {
-    let response = await getUsersById_API(post.userId);
-    setUserName(response.data[0].name);
-  };
-
+const UserPost = ({post}) => {
   const randomDate = () => {
     let result = new Date(
       new Date(2020, 0, 1).getTime() +
@@ -44,27 +34,17 @@ const PostCard = ({ post }) => {
     return body;
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
-
   return (
     <Link to={`posts/${post.id}`}>
-      <article className="postCard">
-        <div className="postCard__head">
-          <Avatar style={{ width: 45, height: 45 }} />
-          <div className="userInfo">
-            <h4>{userName}</h4>
-            <p>{randomDate()}</p>
-          </div>
-        </div>
+      <article className="userPost">
         <span></span>
-        <div className="postCard__info">
-          <h3>{handleTitle()}</h3>
+        <div className="userPost__info">
+          <h6>{randomDate()}</h6>
+          <h4>{handleTitle()}</h4>
           <p>{handleBody()}</p>
         </div>
       </article>
     </Link>
   );
 };
-export default PostCard;
+export default UserPost;
