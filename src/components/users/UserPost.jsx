@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import '../../assets/styles/user.scss'
+import "../../assets/styles/user.scss";
 import moment from "moment";
 import { Link } from "react-router-dom";
 
-const UserPost = ({post}) => {
+const UserPost = ({ post }) => {
   const randomDate = () => {
     let result = new Date(
       new Date(2020, 0, 1).getTime() +
@@ -28,7 +28,7 @@ const UserPost = ({post}) => {
     post.body.length > 60
       ? (body =
           post.body.charAt(0).toUpperCase() +
-          post.body.slice(1).substr(0, 60) +
+          post.body.slice(1).substr(0, 100) +
           "...")
       : (body = post.body.charAt(0).toUpperCase() + post.body.slice(1));
     return body;
@@ -37,7 +37,7 @@ const UserPost = ({post}) => {
   return (
     <Link to={`posts/${post.id}`}>
       <article className="userPost">
-        <span></span>
+        <div className="userPost__image"></div>
         <div className="userPost__info">
           <h6>{randomDate()}</h6>
           <h4>{handleTitle()}</h4>

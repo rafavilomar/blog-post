@@ -9,6 +9,7 @@ import Tasks from "../containers/Tasks";
 import Users from "../containers/Users";
 import About from "../containers/users/About.jsx";
 import AllPosts from "../containers/posts/AllPosts";
+import UserPosts from "../containers/users/UserPosts";
 
 
 const App = () => {
@@ -17,8 +18,8 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/users" component={Users} />
-        <Route exact path="/:user/:tab=about" component={About} />
-        <Route exact path="/:user/:tab" component={About} />
+        <Route exact path="/about/:user/:tab" component={About} />
+        <Route exact path="/posts/:user/:tab" component={UserPosts} />
         <Route exact path="/tasks" component={Tasks} />
         <Route exact path="/posts/" component={AllPosts} />
         <Route exact path="/posts/:key" component={Post} />

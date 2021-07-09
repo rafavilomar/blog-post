@@ -24,3 +24,10 @@
   flex-direction: column;
   gap: 25px;
 }
+
+.userDetails__posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 35px;
+  column-gap: 25px;
+}

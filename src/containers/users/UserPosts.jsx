@@ -6,39 +6,43 @@ import { getPostsByUser_API, getUsersById_API } from "../../fetch";
 import Header from "../../components/layouts/Header";
 import Tab from "../../components/users/Tab";
 import UserPost from "../../components/users/UserPost";
+import UserCard from "../../components/users/UserCard";
 
 const UserPosts = ({ match }) => {
   const [user, setUser] = useState();
-  const [posts, setPosts] = userState([])
+  const [posts, setPosts] = useState([]);
 
   const handleUser = async () => {
     let response = await getUsersById_API(match.params.user);
     setUser(response.data[0]);
-    handlePost()
+    handlePost();
   };
 
   const handlePost = async () => {
     let response = await getPostsByUser_API(match.params.user);
-    setPosts(response.data)
-  }
+    setPosts(response.data);
+  };
 
   useEffect(() => handleUser(), []);
-  return(
+  return (
     <>
-    <Header/>
+      <Header />
       {user && (
         <div className="container userDetails">
           <UserCard user={user} />
-          <div >
+          <div>
             <Tab active={match.params.tab} user={match.params.user} />
             <div className="userDetails__content">
-              {posts.map(post => <UserPost post={post} /> )}
-              
+              <div className="userDetails__posts">
+                {posts.map((post) => (
+                  <UserPost post={post} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
       )}
     </>
-  )
-}
-export default UserPosts
+  );
+};
+export default UserPosts;

@@ -136,28 +136,36 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  span {
-    height: 100%;
-    width: 125px;
-    background-color: $mainColor;
-  }
+  border-radius: 10px;
+  overflow: hidden;
+  gap: 20px;
+  background-color: $bg-secondary;
 }
 
-.userPost__info{
+.userPost__image {
+  min-height: 125px;
+  min-width: 125px;
+  background-color: $mainColor;
+}
+
+.userPost__info {
+  width: 100%;
+  padding: 0 10px;
   h6 {
     font-size: 12px;
     font-family: $font-body;
     color: $textColor-tertiary;
   }
-  h5 {
+  h4 {
     font-size: 20px;
     font-family: $font-title;
     color: $textColor-pimary;
-
+    margin-top: 5px;
   }
   p {
     color: $textColor-secondary;
     font-size: 14px;
     font-family: $font-body;
+    margin-top: 10px;
   }
 }

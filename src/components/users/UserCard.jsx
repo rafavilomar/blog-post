@@ -16,7 +16,7 @@ const UserCard = ({ user }) => {
   useEffect(async () => await getTotalPosts(), []);
 
   return (
-    <Link to={`/${user.id}/about`}>
+    <Link to={`about/${user.id}/about`}>
       <article className="userCard">
         <div className="userCard__image">
           <Avatar style={{ width: 140, height: 140 }} />
