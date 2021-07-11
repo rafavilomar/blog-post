@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../assets/styles/user.scss";
 import moment from "moment";
 import { Link } from "react-router-dom";
@@ -35,7 +35,7 @@ const UserPost = ({ post }) => {
   };
 
   return (
-    <Link to={`posts/${post.id}`}>
+    <Link to={`/posts/${post.id}`}>
       <article className="userPost">
         <div className="userPost__image"></div>
         <div className="userPost__info">
