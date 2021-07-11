@@ -1,4 +1,4 @@
-@import '../main.scss';
+@import "../main.scss";
 
 .users {
   padding: 0 200px;
@@ -9,4 +9,25 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 70px;
   margin: 50px 0;
+}
+
+.userDetails {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 50px;
+}
+
+.userDetails__content {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.userDetails__posts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 35px;
+  column-gap: 25px;
 }

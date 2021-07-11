@@ -12,6 +12,7 @@ import {
   getUsersById_API,
 } from "../../fetch";
 
+//COMPONENTS
 import Fatal from "../../components/layouts/Fatal";
 import Spinner from "../../components/layouts/Spinner";
 import UserCard from "../../components/users/UserCard";
@@ -28,7 +29,6 @@ const Post = ({
   setLoadingComments,
 }) => {
   const [post, setPost] = useState();
-  //const [comments, setComments] = useState([])
   const [user, setUser] = useState();
 
   const handlePost = async () => {
